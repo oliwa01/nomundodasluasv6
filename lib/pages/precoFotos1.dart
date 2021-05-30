@@ -7,6 +7,7 @@ import 'package:nomundodasluas_v6/classes/rowAppBar.dart';
 import 'package:nomundodasluas_v6/pages/principal.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'home.dart';
 import 'luas.dart';
 
 class PrecoFoto1 extends StatefulWidget {
@@ -154,60 +155,22 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
 
   int _selectedIndex = 0;
   void _onItemTapped(int index) {
-    if (index == 1) {
-      if (widget.numberPicture == 1) {
-        _launchInBrowser(
-            "https://loja.nomundodasluas.com.br/mapa-lunar-1-lua-papel-fotografico-");
-      } else if (widget.numberPicture == 2) {
-        _launchInBrowser(
-            "https://loja.nomundodasluas.com.br/3b4hksotm-mapa-lunar-1-lua-papel-fotografico-2020-06-30-12-45-06");
-      } else if (widget.numberPicture == 3) {
-        _launchInBrowser(
-            "https://loja.nomundodasluas.com.br/mapa-lunar-3-luas-papel-fotografico");
-      } else if (widget.numberPicture == 4) {
-        _launchInBrowser(
-            "https://loja.nomundodasluas.com.br/mapa-lunar-4-luas-papel-fotografico");
-      } else if (widget.numberPicture == 5) {
-        _launchInBrowser(
-            "https://loja.nomundodasluas.com.br/mapa-lunar-5-luas-papel-fotografico");
-      } else if (widget.numberPicture == 6) {
-        _launchInBrowser(
-            "https://loja.nomundodasluas.com.br/mapa-lunar-6-luas-papel-fotografico");
-      } else {
-        _launchInBrowser("https://loja.nomundodasluas.com.br/");
-      }
-
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => Principal(widget.email)));
-    } else if (index == 2) {
-      if (widget.numberPicture == 1) {
-        _launchInBrowser(
-            "https://loja.nomundodasluas.com.br/mapa-lunar-individual-aquivo-digital");
-      } else if (widget.numberPicture == 2) {
-        _launchInBrowser(
-            "https://loja.nomundodasluas.com.br/o9c29y2rk-mapa-lunar-individual-aquivo-digital");
-      } else if (widget.numberPicture == 3) {
-        _launchInBrowser(
-            "https://loja.nomundodasluas.com.br/hdlgje02v-mapa-lunar-2-luas-aquivo-digital");
-      } else if (widget.numberPicture == 4) {
-        _launchInBrowser(
-            "https://loja.nomundodasluas.com.br/qq0zhlhdl-mapa-lunar-3-luas-aquivo-digital");
-      } else if (widget.numberPicture == 5) {
-        _launchInBrowser(
-            "https://loja.nomundodasluas.com.br/abri5rvt3-mapa-lunar-4-luas-aquivo-digital");
-      } else if (widget.numberPicture == 6) {
-        _launchInBrowser(
-            "https://loja.nomundodasluas.com.br/eoor9wmiu-mapa-lunar-5-luas-aquivo-digital");
-      } else {
-        _launchInBrowser("https://loja.nomundodasluas.com.br/");
-      }
-
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => Principal(widget.email)));
-    } else if (index == 0) {
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => Principal(widget.email)));
-    }
+    setState(() {
+      (index == 0)
+          ? Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return Principal(widget.email);
+            }))
+          : (index == 1)
+              ? Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Luas(widget.email);
+                }))
+              : (index == 2)
+                  ? _launchInBrowser("https://loja.nomundodasluas.com.br/")
+                  : Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                      return Home();
+                    }));
+    });
   }
 
   Widget build(BuildContext context) {
@@ -256,7 +219,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '50x60 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO - 1 LUA - Tam. 50x60 cm',
-        preco: 'R\$ 90,00',
+        preco: 'R\$ 130,00',
         num: widget.numberPicture,
         codigo: 3);
     //
@@ -264,7 +227,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         iconeFrame: FontAwesomeIcons.images,
         tamanho: '60x90 cm',
         fontAdj: fontAdj,
-        descricao: 'FOTO PAPEL FOTOGRÁFICO - 1 LUA - Tam. 50x60 cm',
+        descricao: 'FOTO PAPEL FOTOGRÁFICO - 1 LUA - Tam. 60x90 cm',
         preco: 'R\$ 190,00',
         num: widget.numberPicture,
         codigo: 4);
@@ -284,7 +247,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '20x60 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO - 2 LUAS Tam. 20x60 cm',
-        preco: 'R\$ 115,00',
+        preco: 'R\$ 135,00',
         num: widget.numberPicture,
         codigo: 1);
     //
@@ -293,7 +256,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '30x90 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO - 2 LUAS  - Tam. 30x90 cm',
-        preco: 'R\$ 140,00',
+        preco: 'R\$ 160,00',
         num: widget.numberPicture,
         codigo: 2);
     //
@@ -302,16 +265,16 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '40x120 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO - 2 LUAS  - Tam. 40x120 cm',
-        preco: 'R\$ 290,00',
+        preco: 'R\$ 240,00',
         num: widget.numberPicture,
         codigo: 3);
     //
     ReusabelContainerPreco r24 = ReusabelContainerPreco(
         iconeFrame: FontAwesomeIcons.images,
-        tamanho: '50x150 cm',
+        tamanho: '60x180 cm',
         fontAdj: fontAdj,
-        descricao: 'FOTO PAPEL FOTOGRÁFICO - 2 LUAS  - Tam. 50x150 cm',
-        preco: 'R\$ 190,00',
+        descricao: 'FOTO PAPEL FOTOGRÁFICO - 2 LUAS  - Tam. 60X180 cm',
+        preco: 'R\$ 350,00',
         num: widget.numberPicture,
         codigo: 4);
     //
@@ -330,7 +293,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '20x60 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO - 3 LUAS  - Tam. 20x60 cm',
-        preco: 'R\$ 115,00',
+        preco: 'R\$ 145,00',
         num: widget.numberPicture,
         codigo: 1);
     //
@@ -339,7 +302,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '30x90 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO -3 LUAS  - Tam. 30x90 cm',
-        preco: 'R\$ 140,00',
+        preco: 'R\$ 180,00',
         num: widget.numberPicture,
         codigo: 2);
     //
@@ -348,16 +311,16 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '40x120 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO -3 LUAS  - Tam. 40x120 cm',
-        preco: 'R\$ 290,00',
+        preco: 'R\$ 260,00',
         num: widget.numberPicture,
         codigo: 3);
     //
     ReusabelContainerPreco r34 = ReusabelContainerPreco(
         iconeFrame: FontAwesomeIcons.images,
-        tamanho: '50x150 cm',
+        tamanho: '60x180 cm',
         fontAdj: fontAdj,
-        descricao: 'FOTO PAPEL FOTOGRÁFICO -3 LUAS  - Tam. 50x150 cm',
-        preco: 'R\$ 190,00',
+        descricao: 'FOTO PAPEL FOTOGRÁFICO -3 LUAS  - Tam. 60x180 cm',
+        preco: 'R\$ 370,00',
         num: widget.numberPicture,
         codigo: 4);
     //
@@ -376,7 +339,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '20x60 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO -4 LUAS  - Tam. 20x60 cm',
-        preco: 'R\$ 115,00',
+        preco: 'R\$ 165,00',
         num: widget.numberPicture,
         codigo: 1);
     //
@@ -385,7 +348,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '30x90 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO -4 LUAS  - Tam. 30x90 cm',
-        preco: 'R\$ 140,00',
+        preco: 'R\$ 200,00',
         num: widget.numberPicture,
         codigo: 2);
     //
@@ -394,16 +357,16 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '40x120 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO -4 LUAS  - Tam. 40x120 cm',
-        preco: 'R\$ 290,00',
+        preco: 'R\$ 280,00',
         num: widget.numberPicture,
         codigo: 3);
     //
     ReusabelContainerPreco r44 = ReusabelContainerPreco(
         iconeFrame: FontAwesomeIcons.images,
-        tamanho: '50x150 cm',
+        tamanho: '60X180 cm',
         fontAdj: fontAdj,
-        descricao: 'FOTO PAPEL FOTOGRÁFICO -4 LUAS  - Tam. 50x150 cm',
-        preco: 'R\$ 190,00',
+        descricao: 'FOTO PAPEL FOTOGRÁFICO -4 LUAS  - Tam. 60X180 cm',
+        preco: 'R\$ 390,00',
         num: widget.numberPicture,
         codigo: 4);
     //
@@ -412,7 +375,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: 'DIGITAL',
         fontAdj: fontAdj,
         descricao: 'FOTO EM ARQUIVO DIGITAL - ALTA DEFINIÇÃO',
-        preco: 'R\$ 120,00',
+        preco: 'R\$ 160,00',
         num: widget.numberPicture,
         codigo: 5);
     //
@@ -422,7 +385,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '20x60 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO -5 LUAS  - Tam. 20x60 cm',
-        preco: 'R\$ 115,00',
+        preco: 'R\$ 185,00',
         num: widget.numberPicture,
         codigo: 1);
     //
@@ -431,7 +394,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '30x90 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO -5 LUAS  - Tam. 30x90 cm',
-        preco: 'R\$ 140,00',
+        preco: 'R\$ 220,00',
         num: widget.numberPicture,
         codigo: 2);
     //
@@ -440,16 +403,16 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '40x120 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO -5 LUAS  - Tam. 40x120 cm',
-        preco: 'R\$ 290,00',
+        preco: 'R\$ 280,00',
         num: widget.numberPicture,
         codigo: 3);
     //
     ReusabelContainerPreco r54 = ReusabelContainerPreco(
         iconeFrame: FontAwesomeIcons.images,
-        tamanho: '50x150 cm',
+        tamanho: '60X180 cm',
         fontAdj: fontAdj,
-        descricao: 'FOTO PAPEL FOTOGRÁFICO -5 LUAS  - Tam. 50x100 cm',
-        preco: 'R\$ 190,00',
+        descricao: 'FOTO PAPEL FOTOGRÁFICO -5 LUAS  - Tam. 60x180 cm',
+        preco: 'R\$ 390,00',
         num: widget.numberPicture,
         codigo: 4);
     //
@@ -458,7 +421,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: 'DIGITAL',
         fontAdj: fontAdj,
         descricao: 'FOTO EM ARQUIVO DIGITAL - ALTA DEFINIÇÃO',
-        preco: 'R\$ 120,00',
+        preco: 'R\$ 180,00',
         num: widget.numberPicture,
         codigo: 5);
     //
@@ -468,7 +431,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '20x60 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO -6 LUAS  - Tam. 20x60 cm',
-        preco: 'R\$ 115,00',
+        preco: 'R\$ 205,00',
         num: widget.numberPicture,
         codigo: 1);
     //
@@ -477,7 +440,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '30x90 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO -6 LUAS  - Tam. 30x90 cm',
-        preco: 'R\$ 140,00',
+        preco: 'R\$ 240,00',
         num: widget.numberPicture,
         codigo: 2);
     //
@@ -486,16 +449,16 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: '40x120 cm',
         fontAdj: fontAdj,
         descricao: 'FOTO PAPEL FOTOGRÁFICO -6 LUAS  - Tam. 40x120 cm',
-        preco: 'R\$ 290,00',
+        preco: 'R\$ 300,00',
         num: widget.numberPicture,
         codigo: 3);
     //
     ReusabelContainerPreco r64 = ReusabelContainerPreco(
         iconeFrame: FontAwesomeIcons.images,
-        tamanho: '50x150 cm',
+        tamanho: '60X180 cm',
         fontAdj: fontAdj,
-        descricao: 'FOTO PAPEL FOTOGRÁFICO -6 LUAS  - Tam. 50x150 cm',
-        preco: 'R\$ 190,00',
+        descricao: 'FOTO PAPEL FOTOGRÁFICO -6 LUAS  - Tam. 60X180 cm',
+        preco: 'R\$ 410,00',
         num: widget.numberPicture,
         codigo: 4);
     //
@@ -504,7 +467,7 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
         tamanho: 'DIGITAL',
         fontAdj: fontAdj,
         descricao: 'FOTO EM ARQUIVO DIGITAL - ALTA DEFINIÇÃO',
-        preco: 'R\$ 120,00',
+        preco: 'R\$ 200,00',
         num: widget.numberPicture,
         codigo: 5);
     //
@@ -543,14 +506,14 @@ class _PrecoFoto1State extends State<PrecoFoto1> {
                     height: heightlua * 0.1,
                     padding: EdgeInsets.all(20),
                     decoration: BoxDecoration(
-                        color: Colors.white12,
+                        color: Colors.deepOrange,
                         borderRadius: BorderRadius.circular(10.0)),
                     child: Text(c1x,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                             color: Colors.white,
                             fontFamily: 'conforta',
-                            fontSize: fontAdj))),
+                            fontSize: fontAdj * 0.6))),
                 SizedBox(height: 10),
                 widget.numberPicture == 1
                     ? r11
