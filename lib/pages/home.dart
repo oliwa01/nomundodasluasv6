@@ -8,6 +8,7 @@ import 'package:nomundodasluas_v6/classes/rowAppBar.dart';
 import 'package:nomundodasluas_v6/pages/cadastro.dart';
 import 'package:nomundodasluas_v6/pages/entrada.dart';
 import 'package:nomundodasluas_v6/pages/principal.dart';
+import 'package:platform_detect2/platform_detect2.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -22,6 +23,31 @@ class _HomeState extends State<Home> {
       content: Text(message),
       duration: const Duration(milliseconds: 1000),
     ));
+  }
+
+  @override
+  void initState() {
+    print(browser);
+    if ((browser.isFirefox) ||
+        (browser.isSafari) ||
+        (browser.isWKWebView) ||
+        (browser.isInternetExplorer)) {
+      showDialog<String>(
+        context: context,
+        builder: (BuildContext context) => AlertDialog(
+          backgroundColor: Colors.white,
+          title: const Text('App. DESENVOLVIDO PARA GOOGLE CHROME'),
+          content: const Text('Poderá ocorrer INSTABILIDADE.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () => Navigator.pop(context, 'OK'),
+              child: const Text('OK'),
+            ),
+          ],
+        ),
+      );
+    }
+    super.initState();
   }
 
   @override

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomundodasluas_v6/classes/repaintBounderyLua.dart';
 import 'package:nomundodasluas_v6/classes/rowAppBar.dart';
+import 'package:nomundodasluas_v6/constantes/constantes.dart';
 import 'package:nomundodasluas_v6/pages/fotossalvas.dart';
 import 'package:nomundodasluas_v6/pages/luas.dart';
 import 'package:nomundodasluas_v6/pages/precoFotos1.dart';
 import 'package:nomundodasluas_v6/pages/principal.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'compraSemCadastro.dart';
 
@@ -44,7 +47,7 @@ class PageFoto1 extends StatefulWidget {
   final String nome6;
   final String nomefamilia;
   final int numberPicture;
-  final String proximodb1;
+  final String proximodb;
   final String proximodb2;
   final String proximodb3;
   final String proximodb4;
@@ -105,7 +108,7 @@ class PageFoto1 extends StatefulWidget {
       this.nome6 = '',
       this.nomefamilia = '',
       this.numberPicture = 0,
-      this.proximodb1 = '',
+      this.proximodb = '',
       this.proximodb2 = '',
       this.proximodb3 = '',
       this.proximodb4 = '',
@@ -137,15 +140,15 @@ class _PageFoto1State extends State<PageFoto1> {
   GlobalKey _containerKey = GlobalKey();
   String _email = '';
   int _numberPictures = 0;
-  int _limite1 = 600;
-  int _limite2 = 500;
-  int _limite3 = 300;
-  int _limite4 = 200;
+  int _limite1 = klimite1;
+  int _limite2 = klimite2;
+  int _limite3 = klimite3;
+  int _limite4 = klimite4;
   String _dataPicket1 = '';
   String _nome1 = '';
   double _distancia1 = 0.0;
   int _luadiadb1 = 0;
-  String _proximodb1 = '';
+  String _proximodb = '';
   String _signosdb1 = '';
   String _timedb1 = '';
   String _timenasc1 = '';
@@ -157,7 +160,7 @@ class _PageFoto1State extends State<PageFoto1> {
     _nome1 = widget.nome1;
     _distancia1 = widget.distanciadb1;
     _luadiadb1 = widget.luadiadb1;
-    _proximodb1 = widget.proximodb1;
+    _proximodb = widget.proximodb;
     _signosdb1 = widget.signo1;
     _timedb1 = widget.timedb1;
     _timenasc1 = widget.timenasc1;
@@ -212,7 +215,7 @@ class _PageFoto1State extends State<PageFoto1> {
             nome1: widget.nome1,
             distanciadb1: widget.distanciadb1,
             luadiadb1: widget.luadiadb1,
-            proximodb1: widget.proximodb1,
+            proximodb1: widget.proximodb,
             signo1: widget.signo1,
             timedb1: widget.timedb1,
             timenasc1: widget.timenasc1,
@@ -228,7 +231,7 @@ class _PageFoto1State extends State<PageFoto1> {
             nome1: widget.nome1,
             distanciadb1: widget.distanciadb1,
             luadiadb1: widget.luadiadb1,
-            proximodb1: widget.proximodb1,
+            proximodb1: widget.proximodb,
             signo1: widget.signo1,
             timedb1: widget.timedb1,
             timenasc1: widget.timenasc1,
@@ -252,12 +255,26 @@ class _PageFoto1State extends State<PageFoto1> {
                   : (index == 3)
                       ? _zoomin()
                       : (index == 4)
-                          ? _zoomin()
+                          ? _launchInBrowser(
+                              "https://loja.nomundodasluas.com.br/")
                           : Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
                               return Principal(widget.email);
                             }));
     });
+  }
+
+  _launchInBrowser(String url) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+        headers: <String, String>{'my_header_key': 'my_header_value'},
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 
   @override
@@ -287,7 +304,7 @@ class _PageFoto1State extends State<PageFoto1> {
         dataPicket1: _dataPicket1,
         distancia1: _distancia1,
         signosdb1: _signosdb1,
-        proximodb1: _proximodb1,
+        proximodb1: _proximodb,
         timedb1: _timedb1,
         timenasc1: _timenasc1);
     retorna(address) {
@@ -341,21 +358,29 @@ class _PageFoto1State extends State<PageFoto1> {
         backgroundColor: Colors.black,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined, color: Colors.white),
+            icon: Icon(Icons.home_outlined, color: Colors.deepOrange),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera, color: Colors.white),
-            label: 'Luas',
+            icon: Icon(FontAwesomeIcons.moneyBill, color: Colors.deepOrange),
+            label: 'Preço da Foto',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart, color: Colors.white),
+            icon: Icon(Icons.zoom_in, color: Colors.deepOrange),
+            label: 'Zoon In',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.zoom_out, color: Colors.deepOrange),
+            label: 'Zoon Out',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.store, color: Colors.deepOrange),
             label: 'Loja',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.deepOrange,
+        unselectedItemColor: Colors.deepOrange,
         onTap: _onItemTapped,
       ),
     );

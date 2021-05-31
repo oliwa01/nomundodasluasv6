@@ -165,7 +165,7 @@ class _DateTimeHemisferioState extends State<DateTimeHemisferio> {
                             ? 'Selecione o hemisfério do local de nascimento.'
                             : '',
                         style: TextStyle(
-                            fontSize: fontAdj * 1.2, color: Colors.deepOrange))
+                            fontSize: fontAdj, color: Colors.deepOrange))
                   ],
                 )),
             Expanded(

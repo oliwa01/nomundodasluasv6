@@ -2,10 +2,13 @@ import 'dart:math';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:nomundodasluas_v6/classes/repaintBounderyLua.dart';
 import 'package:nomundodasluas_v6/classes/rowAppBar.dart';
+import 'package:nomundodasluas_v6/constantes/constantes.dart';
 import 'package:nomundodasluas_v6/pages/precoFotos1.dart';
 import 'package:nomundodasluas_v6/pages/principal.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import 'compraSemCadastro.dart';
 import 'fotossalvas.dart';
@@ -141,10 +144,10 @@ class _PageFoto2State extends State<PageFoto2> {
   GlobalKey _containerKey = GlobalKey();
   GlobalKey _containerKey2 = GlobalKey();
 
-  int _limite1 = 600;
-  int _limite2 = 500;
-  int _limite3 = 300;
-  int _limite4 = 200;
+  int _limite1 = klimite1;
+  int _limite2 = klimite2;
+  int _limite3 = klimite3;
+  int _limite4 = klimite4;
   //
   String _email = '';
   String _nomeFamilia = '';
@@ -315,6 +318,19 @@ class _PageFoto2State extends State<PageFoto2> {
   }
 
   @override
+  _launchInBrowser(String url) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+        headers: <String, String>{'my_header_key': 'my_header_value'},
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
   Widget build(BuildContext context) {
     final widthlua = MediaQuery.of(context).size.width;
     final heightlua = MediaQuery.of(context).size.height;
@@ -420,21 +436,29 @@ class _PageFoto2State extends State<PageFoto2> {
         backgroundColor: Colors.black,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.home_outlined, color: Colors.white),
+            icon: Icon(Icons.home_outlined, color: Colors.deepOrange),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.camera, color: Colors.white),
-            label: 'Luas',
+            icon: Icon(FontAwesomeIcons.moneyBill, color: Colors.deepOrange),
+            label: 'Preço da Foto',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.shopping_cart, color: Colors.white),
+            icon: Icon(Icons.zoom_in, color: Colors.deepOrange),
+            label: 'Zoon In',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.zoom_out, color: Colors.deepOrange),
+            label: 'Zoon Out',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(FontAwesomeIcons.store, color: Colors.deepOrange),
             label: 'Loja',
           ),
         ],
         currentIndex: _selectedIndex,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.white,
+        selectedItemColor: Colors.deepOrange,
+        unselectedItemColor: Colors.deepOrange,
         onTap: _onItemTapped,
       ),
     );

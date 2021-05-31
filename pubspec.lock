@@ -78,13 +78,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.0.3"
-  eva_icons_flutter:
-    dependency: "direct main"
-    description:
-      name: eva_icons_flutter
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "3.0.0"
   fab_circular_menu:
     dependency: "direct main"
     description:
@@ -184,6 +177,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "9.0.0"
+  hovering:
+    dependency: "direct main"
+    description:
+      name: hovering
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   http:
     dependency: transitive
     description:
@@ -240,10 +240,24 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "1.11.0"
+  platform_detect2:
+    dependency: "direct main"
+    description:
+      name: platform_detect2
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.5.0+2"
   plugin_platform_interface:
     dependency: transitive
     description:
       name: plugin_platform_interface
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "2.0.0"
+  pub_semver:
+    dependency: transitive
+    description:
+      name: pub_semver
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"

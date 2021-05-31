@@ -2,6 +2,21 @@ import 'package:flutter/material.dart';
 
 final emailTextController = TextEditingController();
 final passwordTextController = TextEditingController();
+const Icon kIconNavBarHomeWhite =
+    Icon(Icons.home_outlined, color: Colors.white);
+const Icon kIconNavBarHomeOrange =
+    Icon(Icons.home_outlined, color: Colors.deepOrange);
+const Icon kIconNavBarCameraWhite = Icon(Icons.camera, color: Colors.white);
+const Icon kIconNavBarCameraOrange =
+    Icon(Icons.camera_outlined, color: Colors.deepOrange);
+const Icon kIconNavBarShoppingWhite =
+    Icon(Icons.shopping_cart, color: Colors.white);
+const Icon kIconNavBarShoppingOrange =
+    Icon(Icons.shopping_cart, color: Colors.deepOrange);
+const int klimite1 = 800;
+const int klimite2 = 600;
+const int klimite3 = 500;
+const int klimite4 = 400;
 const colorBottomContainer = Colors.pink;
 const kbottomContanerHeight = 80.0;
 //

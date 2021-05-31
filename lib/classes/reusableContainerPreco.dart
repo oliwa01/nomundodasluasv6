@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:hovering/hovering.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ReusabelContainerPreco extends StatelessWidget {
@@ -100,7 +101,10 @@ class ReusabelContainerPreco extends StatelessWidget {
             children: [
               Expanded(
                   flex: 1,
-                  child: Container(
+                  child: HoverContainer(
+                    hoverDecoration: BoxDecoration(
+                        color: Colors.deepOrange[300],
+                        borderRadius: BorderRadius.circular(10.0)),
                     decoration: BoxDecoration(
                         color: Colors.white12,
                         borderRadius: BorderRadius.circular(10.0)),
@@ -112,7 +116,7 @@ class ReusabelContainerPreco extends StatelessWidget {
                         Text(tamanho,
                             textAlign: TextAlign.center,
                             style: TextStyle(
-                                fontSize: fontAdj,
+                                fontSize: fontAdj * 0.8,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.white))
                       ],
@@ -122,7 +126,10 @@ class ReusabelContainerPreco extends StatelessWidget {
               Expanded(
                   flex: 3,
                   child: Align(
-                    child: Container(
+                    child: HoverContainer(
+                        hoverDecoration: BoxDecoration(
+                            color: Colors.deepOrange[300],
+                            borderRadius: BorderRadius.circular(10.0)),
                         alignment: Alignment.center,
                         width: double.infinity,
                         height: double.infinity,
@@ -135,13 +142,16 @@ class ReusabelContainerPreco extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'conforta',
-                                fontSize: fontAdj))),
+                                fontSize: fontAdj * 0.8))),
                   )),
               SizedBox(width: 15),
               Expanded(
                   flex: 1,
                   child: Align(
-                    child: Container(
+                    child: HoverContainer(
+                        hoverDecoration: BoxDecoration(
+                            color: Colors.deepOrange[300],
+                            borderRadius: BorderRadius.circular(10.0)),
                         alignment: Alignment.center,
                         width: double.infinity,
                         height: double.infinity,
@@ -154,7 +164,7 @@ class ReusabelContainerPreco extends StatelessWidget {
                             style: TextStyle(
                                 color: Colors.white,
                                 fontFamily: 'conforta',
-                                fontSize: fontAdj))),
+                                fontSize: fontAdj * 0.8))),
                   ))
             ],
           ),

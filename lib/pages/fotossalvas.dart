@@ -9,6 +9,10 @@ import 'package:nomundodasluas_v6/pages/pageFoto4.dart';
 import 'package:nomundodasluas_v6/pages/pageFoto5.dart';
 import 'package:nomundodasluas_v6/pages/pageFoto6.dart';
 import 'package:nomundodasluas_v6/pages/principal.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import 'home.dart';
+import 'luas.dart';
 
 class FotosSalvas extends StatefulWidget {
   String email = "";
@@ -19,8 +23,37 @@ class FotosSalvas extends StatefulWidget {
 
 class _FotosSalvasState extends State<FotosSalvas> {
   @override
-  void initState() {
-    super.initState();
+  _launchInBrowser(String url) async {
+    if (await canLaunch(url)) {
+      await launch(
+        url,
+        forceSafariVC: true,
+        forceWebView: true,
+        headers: <String, String>{'my_header_key': 'my_header_value'},
+      );
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  int _selectedIndex = 0;
+  void _onItemTapped(int index) {
+    setState(() {
+      (index == 0)
+          ? Navigator.push(context, MaterialPageRoute(builder: (context) {
+              return Principal(widget.email);
+            }))
+          : (index == 1)
+              ? Navigator.push(context, MaterialPageRoute(builder: (context) {
+                  return Luas(widget.email);
+                }))
+              : (index == 2)
+                  ? _launchInBrowser("https://loja.nomundodasluas.com.br/")
+                  : Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                      return Home();
+                    }));
+    });
   }
 
   @override
@@ -28,32 +61,49 @@ class _FotosSalvasState extends State<FotosSalvas> {
     final widthlua = MediaQuery.of(context).size.width;
     final heightlua = MediaQuery.of(context).size.height;
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: DefaultTabController(
-            length: 2,
-            child: Scaffold(
-                appBar: AppBar(
-                  backgroundColor: Colors.black,
-                  title: RowAppBarr(
-                      ' ', widthlua, heightlua, widget.email, 'principal'),
-                  leading: IconButton(
-                      icon: Icon(Icons.arrow_back),
-                      color: Colors.white,
-                      onPressed: () {
-                        Navigator.push(context,
-                            MaterialPageRoute(builder: (context) {
-                          return Principal(widget.email);
-                        }));
-                      }),
-                  centerTitle: true,
-                ),
-                body: TabBarView(children: [
-                  Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: ListPage(widget.email),
-                  ),
-                  Padding(padding: EdgeInsets.all(8.0), child: Text("Em Breve"))
-                ]))));
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+          appBar: AppBar(
+            backgroundColor: Colors.black,
+            title:
+                RowAppBarr(' ', widthlua, heightlua, widget.email, 'principal'),
+            leading: IconButton(
+                icon: Icon(Icons.arrow_back),
+                color: Colors.white,
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) {
+                    return Principal(widget.email);
+                  }));
+                }),
+            centerTitle: true,
+          ),
+          body: Container(
+            height: heightlua,
+            color: Colors.black,
+            child: ListPage(widget.email),
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            backgroundColor: Colors.black,
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home_outlined, color: Colors.white),
+                label: 'Home',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.camera, color: Colors.white),
+                label: 'Luas',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.shopping_cart, color: Colors.white),
+                label: 'Loja',
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white,
+            onTap: _onItemTapped,
+          )),
+    );
 
     //
     //
@@ -67,9 +117,6 @@ class ListPage extends StatefulWidget {
   _ListPageState createState() => _ListPageState();
 }
 
-//
-//
-//
 class _ListPageState extends State<ListPage> {
   @override
   Widget build(BuildContext context) {
@@ -91,7 +138,7 @@ class _ListPageState extends State<ListPage> {
           return Text("Loading");
         }
 
-        return new Container(
+        return Container(
             color: Colors.black,
             child: ListView(
               children: snapshot.data!.docs.map((DocumentSnapshot document) {
@@ -175,7 +222,7 @@ class _ListPageState extends State<ListPage> {
                               hemisferio: document["hemisferio"],
                               distanciadb1: document["distanciadb1"],
                               luadiadb1: document["luadiadb1"],
-                              proximodb1: document["proximodb"],
+                              proximodb: document["proximodb"],
                               signo1: document["signo1"],
                               timenasc1: document["timenasc1"],
                               timedb1: document["timedb1"]);
@@ -425,24 +472,3 @@ class _ListPageState extends State<ListPage> {
 }
 
 //
-class DetailPage extends StatefulWidget {
-  final DocumentSnapshot? post;
-  DetailPage({this.post});
-  @override
-  _DetailPageState createState() => _DetailPageState();
-}
-
-class _DetailPageState extends State<DetailPage> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      child: Card(
-        child: ListTile(
-/*          title: Text(widget.post.data["codVenda"]),
-          subtitle: Text(widget.post.data["email"]),*/
-
-            ),
-      ),
-    );
-  }
-}

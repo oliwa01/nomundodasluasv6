@@ -39,6 +39,9 @@ class MyApp extends StatelessWidget {
           thumbShape: RoundSliderThumbShape(enabledThumbRadius: 15.0),
           overlayShape: RoundSliderOverlayShape(overlayRadius: 30.0),
         ),
+        bottomNavigationBarTheme: BottomNavigationBarTheme.of(context).copyWith(
+          backgroundColor: Colors.black,
+        ),
         primaryColor: Color(0XFF0A0E21),
         scaffoldBackgroundColor: Color(0XFF0A0E21),
       ),
