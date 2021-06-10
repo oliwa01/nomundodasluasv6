@@ -195,7 +195,7 @@ class _Lua4State extends State<Lua4> {
                 'timedb2': docSn2["TimeDb"],
                 'timenasc2': dateTimeHemisferio2.horanasc == 'HH:MM'
                     ? '9999'
-                    : dateTimeHemisferio1.horanasc,
+                    : dateTimeHemisferio2.horanasc,
                 'nome3': dateTimeHemisferio3.nome,
                 'dataPicket3': dateTimeHemisferio3.datanasc,
                 'distanciadb3': docSn3["Distanciadb"],
@@ -206,7 +206,7 @@ class _Lua4State extends State<Lua4> {
                 'timedb3': docSn3["TimeDb"],
                 'timenasc3': dateTimeHemisferio3.horanasc == 'HH:MM'
                     ? '9999'
-                    : dateTimeHemisferio1.horanasc,
+                    : dateTimeHemisferio3.horanasc,
                 'nome4': dateTimeHemisferio4.nome,
                 'dataPicket4': dateTimeHemisferio4.datanasc,
                 'distanciadb4': docSn4["Distanciadb"],
@@ -217,7 +217,7 @@ class _Lua4State extends State<Lua4> {
                 'timedb4': docSn4["TimeDb"],
                 'timenasc4': dateTimeHemisferio4.horanasc == 'HH:MM'
                     ? '9999'
-                    : dateTimeHemisferio1.horanasc
+                    : dateTimeHemisferio4.horanasc
               });
 
               Navigator.push(context, MaterialPageRoute(builder: (context) {

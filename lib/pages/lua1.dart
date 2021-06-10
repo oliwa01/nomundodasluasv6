@@ -115,7 +115,14 @@ class _Lua1State extends State<Lua1> {
         _signosDb = docSn["SignosDb"];
         _timedb1 = docSn["TimeDb"];
         //
-
+        print('*********************************************');
+        print(docSn["Distanciadb"]);
+        print(docSn["LuadiaDb"]);
+        print(docSn["ProximoDb"]);
+        print(docSn["SignosDb"]);
+        print(docSn["TimeDb"]);
+        print('*********************************************');
+        //
         users.doc(_codVenda).set({
           'codVenda': _codVenda,
           'email': widget.email,

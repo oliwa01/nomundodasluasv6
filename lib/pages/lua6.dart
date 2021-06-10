@@ -243,7 +243,7 @@ class _Lua6State extends State<Lua6> {
                     'timedb2': docSn2["TimeDb"],
                     'timenasc2': dateTimeHemisferio2.horanasc == 'HH:MM'
                         ? '9999'
-                        : dateTimeHemisferio1.horanasc,
+                        : dateTimeHemisferio2.horanasc,
                     'nome3': dateTimeHemisferio3.nome,
                     'dataPicket3': dateTimeHemisferio3.datanasc,
                     'distanciadb3': docSn3["Distanciadb"],
@@ -254,7 +254,7 @@ class _Lua6State extends State<Lua6> {
                     'timedb3': docSn3["TimeDb"],
                     'timenasc3': dateTimeHemisferio3.horanasc == 'HH:MM'
                         ? '9999'
-                        : dateTimeHemisferio1.horanasc,
+                        : dateTimeHemisferio3.horanasc,
                     'nome4': dateTimeHemisferio4.nome,
                     'dataPicket4': dateTimeHemisferio4.datanasc,
                     'distanciadb4': docSn4["Distanciadb"],
@@ -265,7 +265,7 @@ class _Lua6State extends State<Lua6> {
                     'timedb4': docSn4["TimeDb"],
                     'timenasc4': dateTimeHemisferio4.horanasc == 'HH:MM'
                         ? '9999'
-                        : dateTimeHemisferio1.horanasc,
+                        : dateTimeHemisferio4.horanasc,
                     'nome5': dateTimeHemisferio5.nome,
                     'dataPicket5': dateTimeHemisferio5.datanasc,
                     'distanciadb5': docSn5["Distanciadb"],
@@ -276,7 +276,7 @@ class _Lua6State extends State<Lua6> {
                     'timedb5': docSn5["TimeDb"],
                     'timenasc5': dateTimeHemisferio5.horanasc == 'HH:MM'
                         ? '9999'
-                        : dateTimeHemisferio1.horanasc,
+                        : dateTimeHemisferio5.horanasc,
                     'nome6': dateTimeHemisferio6.nome,
                     'dataPicket6': dateTimeHemisferio6.datanasc,
                     'distanciadb6': docSn6["Distanciadb"],
@@ -287,7 +287,7 @@ class _Lua6State extends State<Lua6> {
                     'timedb6': docSn6["TimeDb"],
                     'timenasc6': dateTimeHemisferio6.horanasc == 'HH:MM'
                         ? '9999'
-                        : dateTimeHemisferio1.horanasc
+                        : dateTimeHemisferio6.horanasc
                   });
 
                   Navigator.push(context, MaterialPageRoute(builder: (context) {

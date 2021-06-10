@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nomundodasluas_v6/ajustaDb/acertaProximo.dart';
+import 'package:nomundodasluas_v6/ajustaDb/luasErradas.dart';
 import 'package:nomundodasluas_v6/pages/constelacoes.dart';
 import 'package:nomundodasluas_v6/pages/entrada.dart';
 import 'package:nomundodasluas_v6/pages/home.dart';
@@ -118,7 +120,9 @@ class MyApp extends StatelessWidget {
         '/entrada': (context) => Entrada(),
         '/constelacao': (context) => Constelacao("walter@wop.com.br"),
         '/fotossalvas': (context) => FotosSalvas("walter@wop.com.br"),
-        '/vendas': (context) => Vendas()
+        '/vendas': (context) => Vendas(),
+        '/acerta': (context) => AcertaProximo(),
+        '/erradas': (context) => LuasErradas()
       },
     );
   }

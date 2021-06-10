@@ -167,7 +167,7 @@ class _Lua3State extends State<Lua3> {
               'distanciadb1': docSn["Distanciadb"],
               'luadiadb1': docSn["LuadiaDb"],
               'hemisferio': dateTimeHemisferio1.hemisferio,
-              'proximoDb': docSn["ProximoDb"],
+              'proximodb': docSn["ProximoDb"],
               'signo1': docSn["SignosDb"],
               'timedb1': docSn["TimeDb"],
               'timenasc1': dateTimeHemisferio1.horanasc == 'HH:MM'
@@ -178,23 +178,23 @@ class _Lua3State extends State<Lua3> {
               'distanciadb2': docSn2["Distanciadb"],
               'luadiadb2': docSn2["LuadiaDb"],
               'hemisferio2': dateTimeHemisferio1.hemisferio,
-              'proximoDb2': docSn2["ProximoDb"],
+              'proximodb2': docSn2["ProximoDb"],
               'signo2': docSn2["SignosDb"],
               'timedb2': docSn2["TimeDb"],
               'timenasc2': dateTimeHemisferio2.horanasc == 'HH:MM'
                   ? '9999'
-                  : dateTimeHemisferio1.horanasc,
+                  : dateTimeHemisferio2.horanasc,
               'nome3': dateTimeHemisferio3.nome,
               'dataPicket3': dateTimeHemisferio3.datanasc,
               'distanciadb3': docSn3["Distanciadb"],
               'luadiadb3': docSn3["LuadiaDb"],
               'hemisferio3': dateTimeHemisferio1.hemisferio,
-              'proximoDb3': docSn3["ProximoDb"],
+              'proximodb3': docSn3["ProximoDb"],
               'signo3': docSn3["SignosDb"],
               'timedb3': docSn3["TimeDb"],
               'timenasc3': dateTimeHemisferio3.horanasc == 'HH:MM'
                   ? '9999'
-                  : dateTimeHemisferio1.horanasc
+                  : dateTimeHemisferio3.horanasc
             });
 
             Navigator.push(context, MaterialPageRoute(builder: (context) {
